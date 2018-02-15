@@ -21,11 +21,11 @@ public class TwoSum {
 		TwoSum t = new TwoSum();
 		int[] nums = {-3, 4, 1, 6, 0, 9};
 		int target = 9;
-		int[] indexs = t.twoSum(nums, target);
+		int[] indexs = t.twoSum2(nums, target);
 		System.out.println(indexs[0] + "  " + indexs[1]);
 	}
 	
-	public int[] twoSum(int nums[], int target) {
+	public int[] twoSum1(int nums[], int target) {
 		
 		Map<Integer, Integer> map = new HashMap<>();
 		for(int i = 0; i < nums.length; i++) {
@@ -37,6 +37,20 @@ public class TwoSum {
 			if(map.containsKey(n) && map.get(n) != i) {
 				return new int[] {i, map.get(n)};
 			}
+		}
+		
+		throw new IllegalArgumentException("没有可行的两个数的方案！");
+	}
+	
+	public int[] twoSum2(int nums[], int target) {
+		
+		Map<Integer, Integer> map = new HashMap<>();
+		for(int i = 0; i < nums.length; i++) {
+			int n = target - nums[i];
+			if(map.containsKey(n)) {
+				return new int[] {i, map.get(n)};
+			}
+			map.put(nums[i], i);
 		}
 		
 		throw new IllegalArgumentException("没有可行的两个数的方案！");
