@@ -1,21 +1,35 @@
 package cn.freedom.algorithm.medianoftwosortedarrays;
 
+/*
+ * There are two sorted arrays nums1 and nums2 of size m and n respectively.
+ * Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+ * 
+ * nums1 = [1, 3]
+ * nums2 = [2]
+ * The median is 2.0
+ * 
+ * nums1 = [1, 2]
+ * nums2 = [3, 4]
+ * The median is (2 + 3)/2 = 2.5
+ */
+
 public class MedianofTwoSortedArrays {
 	
 	public static void main(String[] args) {
 		
 		MedianofTwoSortedArrays t = new MedianofTwoSortedArrays();
 		
-//		int[] nums1 = t.createNums(10);
-//		int[] nums2 = t.createNums(10);
+		int[] nums1 = t.createNums(10);
+		int[] nums2 = t.createNums(10);
 		
-		int[] nums1 = {1,3};
-		int[] nums2 = {2}; 
+//		int[] nums1 = {1,3};
+//		int[] nums2 = {2}; 
 		
 		t.printNums(nums1);
 		t.printNums(nums2);
 		
 		double m = t.findMedian2(nums1, nums2);
+		System.out.println("median:" + m);
 		
 	}
 	
@@ -34,12 +48,11 @@ public class MedianofTwoSortedArrays {
 		// i分割的边界
 		int i, j, iMax = m, iMin = 0;
 		// 左边部长，若是奇数，左边多一
-		int leftHalf = (m + n + 1) / 2; //2
+		int leftHalf = (m + n + 1) / 2; 
 		
 		while(iMin <= iMax) {
-			i = (iMax + iMin) / 2; 	//  1  
-			j = leftHalf - i;		//  1
-			System.out.println("i:" + i + "  j:" + j);
+			i = (iMax + iMin) / 2; 	
+			j = leftHalf - i;	
 			
 			if (i < iMax && nums1[i] < nums2[j-1]) {
 				iMin = iMin + 1;
