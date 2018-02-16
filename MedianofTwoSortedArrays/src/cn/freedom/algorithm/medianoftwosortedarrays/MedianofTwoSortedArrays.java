@@ -10,7 +10,7 @@ public class MedianofTwoSortedArrays {
 //		int[] nums2 = t.createNums(10);
 		
 		int[] nums1 = {1,3};
-		int[] nums2 = {2};
+		int[] nums2 = {2}; 
 		
 		t.printNums(nums1);
 		t.printNums(nums2);
