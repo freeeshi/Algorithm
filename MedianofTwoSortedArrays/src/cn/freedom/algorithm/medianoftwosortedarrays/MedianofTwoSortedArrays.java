@@ -22,6 +22,15 @@ public class MedianofTwoSortedArrays {
 	public double findMedian2(int[] nums1, int[] nums2) {
 		
 		int m = nums1.length, n = nums2.length;
+		if(m > n) {
+			int[] tmp1 = nums1;
+			nums1 = nums2;
+			nums2 = tmp1;
+			int tmp2 = n;
+			n= m;
+			m = tmp2;
+		}
+		
 		// i分割的边界
 		int i, j, iMax = m, iMin = 0;
 		// 左边部长，若是奇数，左边多一
@@ -32,16 +41,16 @@ public class MedianofTwoSortedArrays {
 			j = leftHalf - i;		//  1
 			System.out.println("i:" + i + "  j:" + j);
 			
-			if(i > iMin && nums1[i-1] > nums2[j]) {
-				iMax = i - 1;
-			}else if (i < iMax && nums1[i] < nums2[j-1]) {
-				iMin = i + 1;			// 	3	5	4
+			if (i < iMax && nums1[i] < nums2[j-1]) {
+				iMin = iMin + 1;
+			}else if(i > iMin && nums1[i-1] > nums2[j]) {
+				iMax = iMax - 1;
 			}else {
 				int leftMax = 0;
 				if(i == 0) {
-					leftMax = nums2[n-1];
+					leftMax = nums2[j-1];
 				}else if(j == 0) {
-					leftMax = nums1[m-1];
+					leftMax = nums1[i-1];
 				}else {
 					leftMax = Math.max(nums1[i-1], nums2[j-1]);
 				}
@@ -52,11 +61,11 @@ public class MedianofTwoSortedArrays {
 				
 				int rigthMin = 0;
 				if(i == m) {
-					rigthMin = nums2[0];
+					rigthMin = nums2[j];
 				}else if (j == n) {
-					rigthMin = nums1[0];
+					rigthMin = nums1[i];
 				}else {
-					rigthMin = Math.min(nums1[j], nums2[i]);
+					rigthMin = Math.min(nums1[i], nums2[j]);
 				}
 				
 				return (leftMax + rigthMin) / 2.0;
