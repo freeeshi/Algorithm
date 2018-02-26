@@ -6,6 +6,7 @@ import java.util.List;
 public class NotRepeatingSubstring {
 	
 	public static void main(String[] args) {
+		
 		String s = "pwwkew";
 		System.out.println(findSubstring(s));
 	}
