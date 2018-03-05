@@ -1,4 +1,4 @@
-package cn.freedom.tree;
+package cn.freedom.searchtree;
 
 public class SearchTree {
 
@@ -6,7 +6,7 @@ public class SearchTree {
 		
 	}
 	
-	private static Tree delete(int num, Tree tree) {
+	private static SearchTreeNode delete(int num, SearchTreeNode tree) {
 		
 		if(tree != null) {
 			throw new RuntimeException("Not Exist The Num!");
@@ -15,7 +15,7 @@ public class SearchTree {
 		}else if(num > tree.getValue()) {
 			tree.setRight(delete(num, tree.getRight()));
 		}else if(tree.getLeft() != null && tree.getRight() != null) {
-			Tree min = findMin(tree.getRight());
+			SearchTreeNode min = findMin(tree.getRight());
 			tree.setValue(min.getValue());
 			tree.setRight(delete(min.getValue(), tree.getRight()));
 		}else {
@@ -29,10 +29,10 @@ public class SearchTree {
 		return tree;
 	}
 	
-	private static Tree insert(int num, Tree tree) {
+	private static SearchTreeNode insert(int num, SearchTreeNode tree) {
 		
 		if(tree == null) {
-			tree = new Tree(num, null, null);
+			tree = new SearchTreeNode(num, null, null);
 		}else if(num < tree.getValue()){
 			tree.setLeft(insert(num, tree.getLeft()));
 		}else if(num > tree.getValue()) {
@@ -42,8 +42,8 @@ public class SearchTree {
 		return tree;
 	}
 	
-	private static Tree findMax(Tree tree) {
-		Tree result = null;
+	private static SearchTreeNode findMax(SearchTreeNode tree) {
+		SearchTreeNode result = null;
 		
 		if(tree != null) {
 			if(tree.getLeft() == null) {
@@ -56,8 +56,8 @@ public class SearchTree {
 		return result;
 	}
 	
-	private static Tree findMin(Tree tree) {
-		Tree result = null;
+	private static SearchTreeNode findMin(SearchTreeNode tree) {
+		SearchTreeNode result = null;
 		
 		if(tree != null) {
 			if(tree.getLeft() == null) {
@@ -70,8 +70,8 @@ public class SearchTree {
 		return result;
 	}
 	
-	private static Tree find(int num, Tree tree) {
-		Tree result = null;
+	private static SearchTreeNode find(int num, SearchTreeNode tree) {
+		SearchTreeNode result = null;
 		
 		if(tree != null) {
 			if(num < tree.getValue()) {
@@ -86,7 +86,7 @@ public class SearchTree {
 		return result;
 	}
 	
-	private static Tree makeEmpty(Tree tree) {
+	private static SearchTreeNode makeEmpty(SearchTreeNode tree) {
 		
 		if(tree != null) {
 			makeEmpty(tree.getLeft());
@@ -98,16 +98,16 @@ public class SearchTree {
 	
 }
 
-class Tree{
+class SearchTreeNode{
 	int value;
-	Tree left;
-	Tree right;
+	SearchTreeNode left;
+	SearchTreeNode right;
 	
-	public Tree() {
+	public SearchTreeNode() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Tree(int value, Tree left, Tree right) {
+	public SearchTreeNode(int value, SearchTreeNode left, SearchTreeNode right) {
 		this.value = value;
 		this.left = left;
 		this.right = right;
@@ -119,16 +119,16 @@ class Tree{
 	public void setValue(int value) {
 		this.value = value;
 	}
-	public Tree getLeft() {
+	public SearchTreeNode getLeft() {
 		return left;
 	}
-	public void setLeft(Tree left) {
+	public void setLeft(SearchTreeNode left) {
 		this.left = left;
 	}
-	public Tree getRight() {
+	public SearchTreeNode getRight() {
 		return right;
 	}
-	public void setRight(Tree right) {
+	public void setRight(SearchTreeNode right) {
 		this.right = right;
 	}
 	
