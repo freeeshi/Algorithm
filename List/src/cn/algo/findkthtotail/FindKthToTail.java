@@ -1,5 +1,8 @@
 package cn.algo.findkthtotail;
 
+import cn.algo.common.ListNode;
+import cn.algo.common.ListUtils;
+
 /**
  * 输入一个链表，输出该链表中倒数第k个结点。
  * @author 石龙飞
@@ -8,15 +11,8 @@ package cn.algo.findkthtotail;
 public class FindKthToTail {
 
 	public static void main(String[] args) {
-		ListNode listNode = null;
-
-		for (int i = 0; i < 10000000; i++) {
-			int num = (int) (Math.random() * 100);
-			ListNode node = new ListNode(num);
-			node.setNext(listNode);
-			listNode = node;
-		}
-		int num = 9000000;
+		int num = 1000000;
+		ListNode listNode = ListUtils.creatList(num);
 		
 		long start = System.currentTimeMillis();
 		find1(listNode, num);
@@ -64,40 +60,6 @@ public class FindKthToTail {
 		}
 		
 		return result;
-	}
-	
-	public static void printList(ListNode head) {
-		while(head != null) {
-			System.out.print(head.getVal() + " ");
-			head = head.getNext();
-		}
-		System.out.println();
-	}
-
-}
-
-class ListNode {
-	int val;
-	ListNode next = null;
-
-	ListNode(int val) {
-		this.val = val;
-	}
-
-	public int getVal() {
-		return val;
-	}
-
-	public void setVal(int val) {
-		this.val = val;
-	}
-
-	public ListNode getNext() {
-		return next;
-	}
-
-	public void setNext(ListNode next) {
-		this.next = next;
 	}
 
 }
