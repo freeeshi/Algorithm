@@ -10,8 +10,9 @@ public class ArrayFindTest {
 	
 	public static void main(String[] args) {
 		int[][] array = {{1,5,6,23,49},{3,12,18,31,51},{8,21,46,47,80}};
-		boolean f = ArrayFindTest.Find(12, array);
-		System.out.println(f);
+//		boolean f = ArrayFindTest.Find(12, array);
+//		System.out.println(f);
+		System.out.println(array[2][3]);
 		
 	}
 

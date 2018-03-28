@@ -2,15 +2,25 @@ package cn.algo.common;
 
 public class TreeNode {
 	
-	private int val;
+	private int value;
 	private TreeNode left;
 	private TreeNode right;
 	
-	public int getVal() {
-		return val;
+	public TreeNode() {
+		// TODO Auto-generated constructor stub
 	}
-	public void setVal(int val) {
-		this.val = val;
+	
+	public TreeNode(int value, TreeNode left, TreeNode right) {
+		this.value = value;
+		this.left = left;
+		this.right = right;
+	}
+	
+	public int getValue() {
+		return value;
+	}
+	public void setValue(int value) {
+		this.value = value;
 	}
 	public TreeNode getLeft() {
 		return left;
