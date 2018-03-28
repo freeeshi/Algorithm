@@ -7,27 +7,17 @@ public class SearchTree {
 
 	public static void main(String[] args) {
 		TreeNode root = createSearchTree(new int[] {3,62,8,12,13,92,16,45,67});
-		int[] arr = TreeUtils.printTreeByPre(root);
-		System.out.println();
-		for(int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
+		int[] arr = TreeUtils.printTreeByPost(root);
 		System.out.println();
 		
+		System.out.println(findMax(root).getValue());
+		System.out.println(findMaxByCycle(root).getValue());
+		System.out.println(findMin(root).getValue());
 		
-		arr = TreeUtils.printTreeByPost(root);
-		System.out.println();
-		for(int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
+		root = delete(3, root);
+		TreeUtils.printTreeByPost(root);
 		System.out.println();
 		
-		arr = TreeUtils.printTreeByIn(root);
-		System.out.println();
-		for(int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-		System.out.println();
 	}
 	
 	public static TreeNode createSearchTree(int[] values) {
@@ -43,7 +33,7 @@ public class SearchTree {
 	
 	private static TreeNode delete(int num, TreeNode tree) {
 		
-		if(tree != null) {
+		if(tree == null) {
 			throw new RuntimeException("Not Exist The Num!");
 		}else if(num < tree.getValue()) {
 			tree.setLeft(delete(num, tree.getLeft()));
@@ -52,7 +42,7 @@ public class SearchTree {
 		}else if(tree.getLeft() != null && tree.getRight() != null) {
 			TreeNode min = findMin(tree.getRight());
 			tree.setValue(min.getValue());
-			tree.setRight(delete(min.getValue(), tree.getRight()));
+			delete(min.getValue(), tree.getRight());
 		}else {
 			if(tree.getRight() == null) {
 				tree = tree.getLeft();
@@ -81,7 +71,7 @@ public class SearchTree {
 		TreeNode result = null;
 		
 		if(tree != null) {
-			if(tree.getLeft() == null) {
+			if(tree.getRight() == null) {
 				result = tree;
 			}else {
 				result = findMax(tree.getRight());
@@ -89,6 +79,14 @@ public class SearchTree {
 		}
 		
 		return result;
+	}
+	
+	private static TreeNode findMaxByCycle(TreeNode tree) {
+		if(tree != null) {
+			while(tree.getRight() != null)
+				tree = tree.getRight();
+		}
+		return tree;
 	}
 	
 	private static TreeNode findMin(TreeNode tree) {
