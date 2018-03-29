@@ -2,6 +2,10 @@ package cn.algo.common;
 
 public class TreeUtils {
 	
+	public static int max(int value1, int value2) {
+		return value1 > value2 ? value1 : value2;
+	}
+	
 	public static void Mirror(TreeNode root) {
 		if(root != null) {
 			TreeNode tmp = root.getLeft();

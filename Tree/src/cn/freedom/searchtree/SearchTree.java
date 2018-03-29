@@ -6,21 +6,22 @@ import cn.algo.common.TreeUtils;
 public class SearchTree {
 
 	public static void main(String[] args) {
-		TreeNode root = createSearchTree(new int[] {3,62,8,12,13,92,16,45,67});
-		int[] arr = TreeUtils.printTreeByPost(root);
+		SearchTree searchTree = new SearchTree();
+		TreeNode root = searchTree.createSearchTree(new int[] {3,62,8,12,13,92,16,45,67});
+		TreeUtils.printTreeByPost(root);
 		System.out.println();
 		
-		System.out.println(findMax(root).getValue());
-		System.out.println(findMaxByCycle(root).getValue());
-		System.out.println(findMin(root).getValue());
+		System.out.println(searchTree.findMax(root).getValue());
+		System.out.println(searchTree.findMaxByCycle(root).getValue());
+		System.out.println(searchTree.findMin(root).getValue());
 		
-		root = delete(3, root);
+		root = searchTree.delete(3, root);
 		TreeUtils.printTreeByPost(root);
 		System.out.println();
 		
 	}
 	
-	public static TreeNode createSearchTree(int[] values) {
+	public TreeNode createSearchTree(int[] values) {
 		int len = values.length;
 		TreeNode root = null;
 		
@@ -31,7 +32,7 @@ public class SearchTree {
 		return root;
 	}
 	
-	private static TreeNode delete(int num, TreeNode tree) {
+	public TreeNode delete(int num, TreeNode tree) {
 		
 		if(tree == null) {
 			throw new RuntimeException("Not Exist The Num!");
@@ -54,7 +55,7 @@ public class SearchTree {
 		return tree;
 	}
 	
-	private static TreeNode insert(int value, TreeNode tree) {
+	public TreeNode insert(int value, TreeNode tree) {
 		
 		if(tree == null) {
 			tree = new TreeNode(value, null, null);
@@ -67,7 +68,7 @@ public class SearchTree {
 		return tree;
 	}
 	
-	private static TreeNode findMax(TreeNode tree) {
+	public TreeNode findMax(TreeNode tree) {
 		TreeNode result = null;
 		
 		if(tree != null) {
@@ -81,7 +82,7 @@ public class SearchTree {
 		return result;
 	}
 	
-	private static TreeNode findMaxByCycle(TreeNode tree) {
+	public TreeNode findMaxByCycle(TreeNode tree) {
 		if(tree != null) {
 			while(tree.getRight() != null)
 				tree = tree.getRight();
@@ -89,7 +90,7 @@ public class SearchTree {
 		return tree;
 	}
 	
-	private static TreeNode findMin(TreeNode tree) {
+	public TreeNode findMin(TreeNode tree) {
 		TreeNode result = null;
 		
 		if(tree != null) {
@@ -103,7 +104,7 @@ public class SearchTree {
 		return result;
 	}
 	
-	private static TreeNode find(int num, TreeNode tree) {
+	public TreeNode find(int num, TreeNode tree) {
 		TreeNode result = null;
 		
 		if(tree != null) {
@@ -119,7 +120,7 @@ public class SearchTree {
 		return result;
 	}
 	
-	private static TreeNode makeEmpty(TreeNode tree) {
+	public TreeNode makeEmpty(TreeNode tree) {
 		
 		if(tree != null) {
 			makeEmpty(tree.getLeft());
