@@ -1,8 +1,8 @@
-package cn.freedom.avltree;
+package cn.algo.avltree;
 
 import cn.algo.common.TreeNode;
 import cn.algo.common.TreeUtils;
-import cn.freedom.searchtree.SearchTree;
+import cn.algo.searchtree.SearchTree;
 
 public class AVLTree extends SearchTree {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package cn.freedom.searchtree;
+package cn.algo.searchtree;
 
 import cn.algo.common.TreeNode;
 import cn.algo.common.TreeUtils;
