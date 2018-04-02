@@ -2,6 +2,12 @@ package cn.algo.common;
 
 public class ArrayUtils {
 	
+	public static void swapInArray(int[] array, int i, int j) {
+		int tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+	}
+	
 	public static int[] createArray() {
 		return createArray(10, 100);
 	}
