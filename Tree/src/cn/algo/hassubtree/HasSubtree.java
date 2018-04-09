@@ -6,7 +6,6 @@ import cn.algo.common.TreeNode;
  * 输入两棵二叉树A，B，判断B是不是A的子结构
  * ps：我们约定空树不是任意一个树的子结构
  * @author 石龙飞
- * 
  * 重点：注意空指针和递归条件
  */
 public class HasSubtree {
