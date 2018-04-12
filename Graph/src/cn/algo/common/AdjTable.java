@@ -5,12 +5,13 @@ import java.util.Scanner;
 public class AdjTable {
 
 	private int tableSize;
+	private int edgeNum;
 	private Node[] list;
 	private int[] indegree;
 
 	public void print() {
 		for (int i = 0; i < tableSize; i++) {
-			System.out.print("node" + (i + 1) + " indegree:"+ indegree[i] + "  ");
+			System.out.print("node" + (i + 1) + " indegree:" + indegree[i] + "  ");
 			for (Node p = list[i].getNode(); p != null; p = p.getNode()) {
 				System.out.print(p.getValue() + "(" + p.getCost() + ") ");
 			}
@@ -18,8 +19,9 @@ public class AdjTable {
 		}
 	}
 
-	public void init(int size, int sideNum) {
+	public void init(int size, int edgeNum) {
 		this.tableSize = size;
+		this.edgeNum = edgeNum;
 		list = new Node[size];
 		indegree = new int[size];
 
@@ -31,7 +33,7 @@ public class AdjTable {
 			list[i].setNode(null);
 		}
 
-		for (int i = 0; i < sideNum; i++) {
+		for (int i = 0; i < edgeNum; i++) {
 			int n = in.nextInt();
 			int d = in.nextInt();
 			int c = in.nextInt();
@@ -67,6 +69,14 @@ public class AdjTable {
 
 	public void setIndegree(int[] indegree) {
 		this.indegree = indegree;
+	}
+
+	public int getEdgeNum() {
+		return edgeNum;
+	}
+
+	public void setEdgeNum(int edgeNum) {
+		this.edgeNum = edgeNum;
 	}
 
 }

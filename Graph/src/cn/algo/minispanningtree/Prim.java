@@ -1,15 +1,12 @@
-package cn.algo.shorestpath;
-
-import java.util.LinkedList;
-import java.util.Queue;
+package cn.algo.minispanningtree;
 
 import cn.algo.common.AdjTable;
 import cn.algo.common.Node;
 import cn.algo.common.StatusTable;
 
-public class Dijkstra {
+public class Prim {
 
-	public void shortestPath(AdjTable adjTable, StatusTable[] statusTable, int start) {
+	public void spanningTree(AdjTable adjTable, StatusTable[] statusTable, int start) {
 		statusTable[start - 1].setD(0);
 
 		while (true) {
@@ -20,12 +17,13 @@ public class Dijkstra {
 			statusTable[currNode - 1].setKnown(true);
 			for (Node p = adjTable.getList()[currNode - 1].getNode(); p != null; p = p.getNode()) {
 				int cost = statusTable[currNode - 1].getD() + p.getCost();
-				if (!statusTable[p.getValue() - 1].isKnown() && statusTable[p.getValue() - 1].getD() > cost) {
-					statusTable[p.getValue() - 1].setD(cost);
+				if (!statusTable[p.getValue() - 1].isKnown() && statusTable[p.getValue() - 1].getD() > p.getCost()) {
+					statusTable[p.getValue() - 1].setD(p.getCost());
 					statusTable[p.getValue() - 1].setP(currNode);
 				}
 			}
 		}
+
 	}
 
 	private int findSmallestUnknomnNode(StatusTable[] table) {
